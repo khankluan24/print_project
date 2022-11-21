@@ -1,0 +1,52 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+  color: unset;
+  &:hover {
+    color: unset;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.row {
+  margin-left: unset !important;
+  margin-right: unset !important;
+  > * {
+    padding-left: unset !important;
+    padding-right: unset !important;
+  }
+}
+
+.bottom-0 {
+  bottom: 0 !important;
+}
+
+.text-pre-wrap {
+  white-space: pre-wrap !important;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+}
