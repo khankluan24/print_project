@@ -24,23 +24,23 @@
                 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light sidebar__section">
                     <a href="/"
                         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-
                         <span class="fs-4">Sidebar</span>
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item">
-                            <a href="#" class="link__add nav-link active" aria-current="page" onclick="handleAddPage()">
+                        <li class="nav-item ">
+                            <a href="#" class="link__add nav-link link-dark" aria-current="page"
+                                onclick="handleAddPage()">
                                 Add
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="link__edit nav-link link-dark" name = "link__edit">
+                            <a href="#" class="link__edit nav-link link-dark" name="link__edit">
                                 Edit
                             </a>
                         </li>
                         <li>
-                            <a href = "#" class="link__print nav-link link-dark" onclick="handlePrint()">
+                            <a href="#" class="link__print nav-link link-dark" onclick="handlePrint()">
                                 Print
                             </a>
                         </li>
@@ -57,50 +57,61 @@
                         <span class="navbar-brand mb-0 h1 text-light">Navbar</span>
                     </div>
                 </nav>
-                <form class="d-flex justify-content-between">
+                <form class="d-flex justify-content-between" onsubmit="checkForm()">
                     <div class="col-2 p-2">
-                        <label for="imageUser" class="form-label">Image</label>
+                        <label for="imageUser" class="form-label">Image *</label>
                         <input type="file" class="form-control" name="imageUser" id="imageUser">
+                        <div class="message-text" title="imageUser"></div>
                     </div>
 
                     <div class="col-9 pt-2 pb-4">
                         <div class="d-flex">
                             <div class="col-5 me-5">
-                                <label for="userName" class="form-label">Name</label>
+                                <label for="userName" class="form-label">Name *</label>
                                 <input type="text" class="form-control" name="userName" id="userName">
+                                <div class="message-text userName" title="userName"></div>
+
                             </div>
                             <div class="col-5">
-                                <label for="position" class="form-label">Position</label>
+                                <label for="position" class="form-label">Position *</label>
                                 <input type="text" class="form-control" name="position" id="position">
+                                <div class="message-text position" title="position"></div>
+
                             </div>
 
                         </div>
 
                         <div class="d-flex align-items-center my-3">
                             <div class="mb-3 col-5 me-5">
-                                <label for="dateOfBirth" class="form-label">Date of birth</label>
+                                <label for="dateOfBirth" class="form-label">Date of birth *</label>
                                 <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth">
+                                <div class="message-text" title="dateOfBirth"></div>
                             </div>
                             <div class="mb-3 col-5">
-                                <label for="gender" class="form-label">Gender</label>
+                                <label for="gender" class="form-label">Gender *</label>
 
-                                <select class="form-select" id="gender">
+                                <select class="form-select" id="gender" name="gender">
                                     <option selected value="">Choose your gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
+                                <div class="message-text" title="gender"></div>
+
                             </div>
 
                         </div>
 
                         <div class="d-flex">
                             <div class="mb-3 col-5 me-5">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="phone" id="phone">
+                                <label for="phone" class="form-label">Phone *</label>
+                                <input type="text" required class="form-control" name="phone" id="phone">
+                                <div class="message-text" title="phone"></div>
                             </div>
                             <div class="mb-3 col-5">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label">Email *</label>
                                 <input type="email" class="form-control" name="email" id="email">
+                                <div class="message-text" title="email"></div>
+
                             </div>
 
                         </div>
@@ -108,24 +119,28 @@
                         <div class="mb-3">
                             <label for="website" class="form-label">Website</label>
                             <input type="text" class="form-control" name="website" id="website">
+
                         </div>
 
                         <label for="objective">Objective</label>
                         <div class="form-floating">
-                            <textarea class="form-control" id="objective" style="height: 100px"></textarea>
+                            <textarea class="form-control" id="objective" style="height: 100px"></textarea>/div>
                         </div>
 
                         <div class="d-flex my-3 pe-md-2 pe-lg-0">
                             <div class="me-5 col-3">
-                                <label for="educationTime" class="form-label">Education time</label>
+                                <label for="educationTime" class="form-label">Education time *</label>
                                 <input type="date" class="form-control" name="educationTime" id="educationTime">
+                                <div class="message-text" title="educationTime"></div>
                             </div>
                             <div class="mb-3 col-8">
-                                <label for="educationInfo" class="form-label">Education information</label>
-                                <textarea type="text" class="form-control" name="educationInfo" id="educationInfo"></textarea>
+                                <label for="educationInfo" class="form-label">Education information *</label>
+                                <textarea type="text" class="form-control" name="educationInfo"
+                                    id="educationInfo"></textarea>
+                                <div class="message-text" title="educationInfo"></div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        <button type="button" class="btn btn-primary w-100">Submit</button>
                     </div>
                 </form>
             </div>
