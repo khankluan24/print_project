@@ -30,7 +30,7 @@
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" aria-current="page">
+                            <a href="#" class="nav-link active" aria-current="page" onclick="handleAddPage()">
                                 Add
                             </a>
                         </li>
@@ -40,7 +40,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link link-dark">
+                            <a href="#" class="nav-link link-dark" onclick="handlePrint()">
                                 Print
                             </a>
                         </li>
@@ -86,8 +86,8 @@
 
                                 <select class="form-select" id="gender">
                                     <option selected value="">Choose your gender</option>
-                                    <option value="0">Male</option>
-                                    <option value="1">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                             </div>
 
