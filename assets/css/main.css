@@ -51,4 +51,63 @@ input::-webkit-inner-spin-button {
   right: 0;
 }
 
+.printContent {
+  max-width: 1200px;
+  margin: 100px auto;
+}
+.printContent .userInfo {
+  display: flex;
+  gap: 40px;
+}
+.printContent .userInfo__main-name {
+  display: block;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  color: #3f3f9b;
+  margin-bottom: 4px;
+}
+.printContent .userInfo__main-position {
+  display: block;
+  font-size: 24px;
+  line-height: 24px;
+  color: #000050;
+  margin-bottom: 4px;
+}
+.printContent .userInfo__main div {
+  margin-bottom: 4px;
+}
+.printContent .userInfo__main div span:nth-child(1) {
+  font-size: 20px;
+  font-weight: 500;
+  min-width: 140px;
+  display: inline-block;
+}
+.printContent .userObjective {
+  margin-top: 40px;
+}
+.printContent .userObjective header {
+  font-size: 26px;
+  font-weight: 500;
+  border-bottom: 1px solid #ccc;
+}
+.printContent .userEducation {
+  margin-top: 40px;
+}
+.printContent .userEducation header {
+  font-size: 26px;
+  font-weight: 500;
+  border-bottom: 1px solid #ccc;
+}
+.printContent .userEducation div {
+  display: flex;
+  gap: 40px;
+}
+.printContent .userEducation div div:nth-child(1) {
+  flex: 1;
+}
+.printContent .userEducation div div:nth-child(2) {
+  flex: 3;
+}
+
 /*# sourceMappingURL=main.css.map */
