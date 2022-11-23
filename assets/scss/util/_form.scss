@@ -10,6 +10,14 @@
 
 .message-text {
     &.invalid {
-        color: #dc3545 !important
+        color: #dc3545 !important;
     }
+}
+@media print {
+    .sidebar {
+        display: none;
+    }
+}
+textarea {
+    resize: none;
 }
