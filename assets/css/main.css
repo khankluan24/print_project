@@ -123,5 +123,13 @@ input::-webkit-inner-spin-button {
 .printContent .userEducation div div:nth-child(2) {
   flex: 3;
 }
+@media print {
+  .sidebar{
+    display: none;
+  }
+}
+textarea {
+  resize: none;
+}
 
 /*# sourceMappingURL=main.css.map */
