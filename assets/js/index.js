@@ -17,11 +17,17 @@ function handleAddPage() {
     const url = "http://127.0.0.1:5500/index.html";
     document.location.href = url;
 }
+
 function handleSubmit() {
-    if (validator()) {
-        const url = `http://127.0.0.1:5500/print.html?userName=${userName.value}&position=${position.value}&dateOfBirth=${dateOfBirth.value}&gender=${gender.value}&phone=${phone.value}&email=${email.value}&website=${website.value}&objective=${objective.value}&educationTime=${educationTime.value}&educationInfo=${educationInfo.value}`;
-        document.location.href = url;
-    }
+    var fReader = new FileReader();
+    fReader.readAsDataURL(imageUser.files[0]);
+    fReader.onloadend = function (event) {
+        localStorage.setItem("imageUser", event.target.result);
+    };
+
+    if (!validator()) return;
+    const url = `http://127.0.0.1:5500/print.html?userName=${userName.value}&position=${position.value}&dateOfBirth=${dateOfBirth.value}&gender=${gender.value}&phone=${phone.value}&email=${email.value}&website=${website.value}&objective=${objective.value}&educationTime=${educationTime.value}&educationInfo=${educationInfo.value}&address=${address.value}&imageUser=${imageUser.value}`;
+    document.location.href = url;
 }
 window.onload = function () {
     const url = document.location.href;
@@ -40,16 +46,23 @@ window.onload = function () {
         tmp = params[i].split("=");
         data[tmp[0]] = tmp[1];
     }
-    userName.innerHTML = data.userName;
-    position.innerHTML = data.position;
+    userName.innerHTML = data.userName.replaceAll("%20", " ");
+    position.innerHTML = data.position.replaceAll("%20", " ");
     dateOfBirth.innerHTML = data.dateOfBirth.split("%")[0];
-    gender.innerHTML = data.gender;
-    phone.innerHTML = data.phone;
-    email.innerHTML = data.email;
-    website.innerHTML = data.website;
-    objective.innerHTML = data.objective;
-    educationTime.innerHTML = data.educationTime;
-    educationInfo.innerHTML = data.educationInfo;
+    gender.innerHTML = data.gender.replaceAll("%20", " ");
+    phone.innerHTML = data.phone.replaceAll("%20", " ");
+    email.innerHTML = data.email.replaceAll("%20", " ");
+    website.innerHTML = data.website.replaceAll("%20", " ");
+    objective.innerHTML = data.objective.replaceAll("%20", " ");
+    educationTime.innerHTML = data.educationTime.replaceAll("%20", " ");
+    educationInfo.innerHTML = data.educationInfo.replaceAll("%20", " ");
+    address.innerHTML = data.address.replaceAll("%20", " ");
+    if (localStorage.getItem("imageUser")) {
+        imageUser.src = localStorage.getItem("imageUser");
+    } else {
+        imageUser.src =
+            "https://cdn.popsww.com/blog-kids/sites/3/2022/04/songoku-nho.jpg";
+    }
 };
 
 const success = (element, message, identify) => {
@@ -92,22 +105,26 @@ const checkValid = () => {
         email,
         phone,
     ];
-
-    userInfoArray.forEach((info) => {
-        const infoNameAttribute = info.getAttribute("name");
-        if (info.value.length <= 0) {
-            error(info, "Vui lòng điền vào trường này", infoNameAttribute);
-            return false;
+    let check = true;
+    for (let i = 0; i < userInfoArray.length; i++) {
+        const infoNameAttribute = userInfoArray[i].getAttribute("name");
+        if (userInfoArray[i].value.trim().length <= 0) {
+            error(
+                userInfoArray[i],
+                "Vui lòng điền vào trường này",
+                infoNameAttribute
+            );
+            check = false;
         } else {
-            success(info, "", infoNameAttribute);
-            return true;
+            success(userInfoArray[i], "", infoNameAttribute);
         }
-    });
+    }
+    return check;
 };
 const validator = () => {
+    console.log(checkValid());
+
     if (checkValid()) {
-        return false;
-    } else {
         const dateOfBirthValue = dateOfBirth.value;
         const phoneValue = phone.value.trim();
         const mailValue = email.value.trim();
@@ -149,19 +166,23 @@ const validator = () => {
             );
             return false;
         }
+
+        //Check date gra
         if (new Date(educationTime) > new Date()) {
             error(dateOfBirth, "Ngày tốt nghiệp không hợp lý", "educationTime");
             return false;
         }
 
+        // check gender
         if (!gender.value) {
             error(gender, "Chọn giới tính hợp lệ", "gender");
             return false;
         } else {
             success(gender, "", "gender");
         }
+        return true;
     }
-    return true;
+    return false;
 };
 function handlePrint() {
     window.print();

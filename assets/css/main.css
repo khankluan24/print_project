@@ -127,9 +127,17 @@ input::-webkit-inner-spin-button {
   .sidebar{
     display: none;
   }
+  @page {
+    size: auto;
+    margin: 0;
+         }
 }
 textarea {
   resize: none;
 }
-
+.imageUserPrint {
+  width: 200px;
+  height: 200px;
+  object-fit:cover ;
+}
 /*# sourceMappingURL=main.css.map */

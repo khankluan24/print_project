@@ -17,6 +17,10 @@
     .sidebar {
         display: none;
     }
+    @page {
+        size: auto;
+        margin: 0;
+    }
 }
 textarea {
     resize: none;
