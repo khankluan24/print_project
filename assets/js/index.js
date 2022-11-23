@@ -10,6 +10,15 @@ const educationTime = document.getElementById("educationTime");
 const educationInfo = document.getElementById("educationInfo");
 const imageUser = document.getElementById("imageUser");
 const address = document.getElementById("address");
+const imgPreview = document.getElementById("imgPreview");
+
+const loadFile = function (event) {
+    imgPreview.src = URL.createObjectURL(event.target.files[0]);
+    imgPreview.onload = function () {
+        URL.revokeObjectURL(output.src); // free memory
+    };
+};
+
 const eligibleGraduateTime = 22;
 const eligibleAge = 18;
 
@@ -19,15 +28,14 @@ function handleAddPage() {
 }
 
 function handleSubmit() {
+    if (!validator()) return;
+    const url = `http://127.0.0.1:5500/print.html?userName=${userName.value}&position=${position.value}&dateOfBirth=${dateOfBirth.value}&gender=${gender.value}&phone=${phone.value}&email=${email.value}&website=${website.value}&objective=${objective.value}&educationTime=${educationTime.value}&educationInfo=${educationInfo.value}&address=${address.value}&imageUser=${imageUser.value}`;
+    document.location.href = url;
     var fReader = new FileReader();
     fReader.readAsDataURL(imageUser.files[0]);
     fReader.onloadend = function (event) {
         localStorage.setItem("imageUser", event.target.result);
     };
-
-    if (!validator()) return;
-    const url = `http://127.0.0.1:5500/print.html?userName=${userName.value}&position=${position.value}&dateOfBirth=${dateOfBirth.value}&gender=${gender.value}&phone=${phone.value}&email=${email.value}&website=${website.value}&objective=${objective.value}&educationTime=${educationTime.value}&educationInfo=${educationInfo.value}&address=${address.value}&imageUser=${imageUser.value}`;
-    document.location.href = url;
 }
 window.onload = function () {
     const url = document.location.href;

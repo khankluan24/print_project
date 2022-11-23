@@ -44,10 +44,12 @@
                         <span class="navbar-brand mb-0 h1 text-light">Group1</span>
                     </div>
                 </nav>
-                <form class="d-flex justify-content-between" onsubmit="checkForm()">
+                <form class="d-flex flex-md-column flex-lg-row justify-content-between" onsubmit="checkForm()">
                     <div class="col-2 p-2">
-                        <label for="imageUser" class="form-label">Image *</label>
-                        <input type="file" class="form-control" name="imageUser" id="imageUser">
+                        <label for="imageUser" class="form-label">Image * </label>
+                        <input type="file" name="imageUser" id="imageUser" style="color: transparent;"
+                            onchange="loadFile(event)">
+                        <img id="imgPreview" />
                         <div class="message-text" title="imageUser"></div>
                     </div>
 

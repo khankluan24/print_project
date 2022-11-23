@@ -140,4 +140,10 @@ textarea {
   height: 200px;
   object-fit:cover ;
 }
+#imgPreview{
+  margin-top: 40px;
+  width: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
 /*# sourceMappingURL=main.css.map */
