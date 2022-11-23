@@ -51,6 +51,12 @@ input::-webkit-inner-spin-button {
   right: 0;
 }
 
+.preview_img {
+  margin-top: 40px;
+  width: 200px;
+  border-radius: 8px;
+}
+
 .printContent {
   max-width: 1200px;
   margin: 100px auto;
@@ -108,6 +114,12 @@ input::-webkit-inner-spin-button {
 }
 .printContent .userEducation div div:nth-child(2) {
   flex: 3;
+}
+
+@media print {
+  .sidebar {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

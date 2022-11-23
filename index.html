@@ -60,7 +60,8 @@
                 <form class="d-flex justify-content-between">
                     <div class="col-2 p-2">
                         <label for="imageUser" class="form-label">Image</label>
-                        <input type="file" class="form-control" name="imageUser" id="imageUser">
+                        <input type="file" class="form-control" name="imageUser" id="imageUser" onchange="loadFile(event)">
+                        <img id="output" class="preview_img"/>
                     </div>
 
                     <div class="col-9 pt-2 pb-4">
